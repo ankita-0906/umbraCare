@@ -19,14 +19,14 @@ const Navbar = ({ setIsLoggedIn }) => {
 
   // Modified isActive to include /newsletter/fertility-treatments, /newsletter/nutrition-tips, and /newsletter/menstrual-cycle
   const isActive = (path) => {
-    if (path === '/newsletter') {
-      return (
-        location.pathname === '/newsletter' ||
-        location.pathname === '/newsletter/fertility-treatments' ||
-        location.pathname === '/newsletter/nutrition-tips' ||
-        location.pathname === '/newsletter/menstrual-cycle'
-      );
-    }
+    // if (path === '/newsletter') {
+    //   return (
+    //     location.pathname === '/newsletter' ||
+    //     location.pathname === '/newsletter/fertility-treatments' ||
+    //     location.pathname === '/newsletter/nutrition-tips' ||
+    //     location.pathname === '/newsletter/menstrual-cycle'
+    //   );
+    // }
     return location.pathname === path;
   };
 

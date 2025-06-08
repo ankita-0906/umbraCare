@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBaby, FaCalendarAlt, FaFlask, FaUserMd } from 'react-icons/fa';
 import Plot from 'react-plotly.js';
-import Plotly from 'plotly.js-dist-min';
 import axios from 'axios';
+import ImageCarousel from './imgcarousel'
+import  Component from "./dashboardbottom";
 
 function list(start, end) {
   return Array.from({length: end - start + 1}, (v, k) => k + start);
@@ -152,7 +153,7 @@ const Dashboard = () => {
         {/* First Row: 3 Charts */}
         <div style={styles.graphRow}>
           {/* Cycle Length Analysis */}
-          <div style={styles.cardContainer}>
+          {/* <div style={styles.cardContainer}>
             <div style={styles.cardHeader}>
               <h3 style={styles.cardTitle}>Cycle Length Analysis</h3>
             </div>
@@ -212,7 +213,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Next Period Prediction */}
           <div style={styles.cardContainer}>
@@ -326,180 +327,25 @@ const Dashboard = () => {
               )}
             </div>
           </div>
+
+           {/* slider */}
+        <div style={styles.cardContainer}>
+          <div style={styles.cardHeader}>
+              <h3 style={styles.cardTitle}>Information</h3>
+            </div>
+          <ImageCarousel/>
+
         </div>
-
-        {/* Second Row: 3 Charts */}
-        <div style={styles.graphRow}>
-          {/* Pregnancy Journey */}
-          <div style={styles.cardContainer}>
-            <div style={styles.cardHeader}>
-              <h3 style={styles.cardTitle}>Pregnancy Journey</h3>
-            </div>
-            <div style={styles.graphCard}>
-              <Plot
-                data={[
-                  {
-                    type: 'indicator',
-                    mode: 'number+gauge+delta',
-                    value: 5,
-                    delta: { reference: 40, decreasing: { color: '#FF8C00' }, font: { size: 14 } },
-                    domain: { 'x': [0.05, 0.95], 'y': [0.88, 0.98] },
-                    title: { 'text': `<b style="font-size:18px;color:#FF8C00">5 Weeks Pregnant</b><br><span style="font-size:14px;color:#666">35 Weeks to Go</span>`, 'font': { 'family': 'Poppins' } },
-                    gauge: {
-                      'shape': "bullet",
-                      'axis': { 'range': [null, 40], 'visible': false },
-                      'bar': { 'color': "rgba(255, 140, 0, 0.8)", 'thickness': 0.25, 'line': { 'width': 1, 'color': 'darkorange' } },
-                      'bgcolor': "rgba(255, 140, 0, 0.1)",
-                      'steps': [{ 'range': [0, 5], 'color': "rgba(255, 140, 0, 0.6)" }],
-                      'threshold': { 'line': { 'color': "red", 'width': 2 }, 'thickness': 0.8, 'value': 5 }
-                    }
-                  },
-                  {
-                    type: 'indicator',
-                    mode: 'number',
-                    value: pregnancyData.sizes[4],
-                    number: { 'suffix': " inches", 'font': { 'size': 28, 'color': '#FF8C00', 'family': 'Poppins' } },
-                    domain: { 'x': [0.05, 0.45], 'y': [0.6, 0.8] },
-                    title: { 'text': "<b>Current Size</b>", 'font': { 'size': 14, 'family': 'Poppins' } }
-                  },
-                  {
-                    type: 'indicator',
-                    mode: 'number',
-                    value: 0,
-                    number: { 'prefix': `<span style="font-size:20px;color:#FF8C00">👶 Baby size like:<br><span style="font-size:24px;font-weight:bold">${pregnancyData.comparisons[4]}</span></span>` },
-                    domain: { 'x': [0.55, 0.95], 'y': [0.6, 0.8] }
-                  },
-                  {
-                    type: 'scatter',
-                    x: pregnancyData.weeks,
-                    y: pregnancyData.sizes,
-                    mode: 'lines+markers',
-                    line: { 'color': 'rgba(255, 140, 0, 0.7)', 'width': 4, 'shape': 'spline', 'smoothing': 1.2 },
-                    marker: {
-                      'size': pregnancyData.sizes.map(s => Math.max(8, s * 15)),
-                      'color': pregnancyData.sizes.map((s, i) => i === 4 ? '#FF8C00' : 'rgba(255, 140, 0, 0.5)'),
-                      'line': { 'width': 1, 'color': 'white' },
-                      'symbol': pregnancyData.weeks.map((w, i) => i === 4 ? 'diamond' : 'circle'),
-                      'opacity': 0.8
-                    },
-                    'hoverinfo': 'text',
-                    'text': pregnancyData.weeks.map((w, i) => `Week ${w}<br>Size: ${pregnancyData.sizes[i]}"<br>Like: ${pregnancyData.comparisons[i]}`),
-                    'hovertemplate': '%{text}<extra></extra>'
-                  },
-                  {
-                    type: 'scatter',
-                    x: [5],
-                    y: [pregnancyData.sizes[4]],
-                    mode: 'markers',
-                    marker: { 'size': 30, 'color': '#FF8C00', 'symbol': 'diamond', 'line': { 'width': 2, 'color': 'white' }, 'opacity': 0.9 },
-                    'hoverinfo': 'skip'
-                  }
-                ]}
-                layout={{
-                  width: 350,
-                  height: 250,
-                  margin: { 't': 50, 'b': 40, 'l': 40, 'r': 40, 'pad': 10 },
-                  plot_bgcolor: '#FFFBF8',
-                  paper_bgcolor: 'rgba(0,0,0,0)',
-                  font: { 'family': 'Poppins' },
-                  xaxis: { 'title': { 'text': '<b>Weeks</b>', 'font': { 'size': 12 } }, 'range': [0.5, 40.5], 'tickvals': Array.from({length: 9}, (_, i) => i * 5) },
-                  yaxis: { 'title': { 'text': '<b>Size (in)</b>', 'font': { 'size': 12 } }, 'range': [0, Math.max(...pregnancyData.sizes) * 1.15] },
-                  transition: { 'duration': 1500, 'easing': 'cubic-in-out' }
-                }}
-                config={{ displayModeBar: false, responsive: true, scrollZoom: false }}
-              />
-            </div>
-          </div>
-
-          {/* Pregnancy Vital Signs */}
-          <div style={styles.cardContainer}>
-            <div style={styles.cardHeader}>
-              <h3 style={styles.cardTitle}>❤️ Pregnancy Vital Signs</h3>
-            </div>
-            <div style={styles.graphCard}>
-              <Plot
-                data={[
-                  {
-                    type: 'scatter',
-                    mode: 'lines',
-                    name: 'Heart Rate',
-                    x: ['Week 4', 'Week 8', 'Week 12', 'Week 16', 'Week 20', 'Week 24', 'Week 28', 'Week 32', 'Week 36', 'Week 40'],
-                    y: [72, 75, 78, 82, 85, 88, 90, 92, 94, 96],
-                    line: {color: '#FF6B8B', width: 3, shape: 'spline'},
-                    marker: {symbol: 'heart', size: 10}
-                  },
-                  {
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    name: 'Blood Sugar',
-                    x: ['Week 4', 'Week 8', 'Week 12', 'Week 16', 'Week 20', 'Week 24', 'Week 28', 'Week 32', 'Week 36', 'Week 40'],
-                    y: [85, 88, 86, 90, 92, 95, 98, 96, 99, 101],
-                    yaxis: 'y2',
-                    line: {color: '#FFAA80', width: 3, dash: 'dot', shape: 'spline'},
-                    marker: {symbol: 'hexagram', size: 10}
-                  }
-                ]}
-                layout={{
-                  width: 350,
-                  height: 250,
-                  margin: {t: 40, b: 60, l: 50, r: 50},
-                  plot_bgcolor: '#FFFBF8',
-                  paper_bgcolor: 'rgba(0,0,0,0)',
-                  xaxis: { title: 'Pregnancy Timeline', gridcolor: 'rgba(255,140,0,0.1)' },
-                  yaxis: { title: 'Heart Rate (bpm)', range: [65, 110], gridcolor: 'rgba(255,140,0,0.1)', titlefont: {color: '#FF6B8B'} },
-                  yaxis2: { title: 'Blood Sugar (mg/dL)', overlaying: 'y', side: 'right', range: [75, 110], titlefont: {color: '#FFAA80'} }
-                }}
-                config={{displayModeBar: false}}
-              />
-            </div>
-          </div>
-
-          {/* Pressure & Glucose */}
-          <div style={styles.cardContainer}>
-            <div style={styles.cardHeader}>
-              <h3 style={styles.cardTitle}>🩸 Pressure & Glucose</h3>
-            </div>
-            <div style={styles.graphCard}>
-              <Plot
-                data={[
-                  {
-                    type: 'candlestick',
-                    name: 'Blood Pressure',
-                    x: ['1st Tri', '2nd Tri', '3rd Tri'],
-                    open: [112, 115, 118],
-                    high: [122, 125, 128],
-                    low: [108, 112, 115],
-                    close: [118, 120, 124],
-                    increasing: {line: {color: '#FF8C00'}},
-                    decreasing: {line: {color: '#FF6B8B'}}
-                  },
-                  {
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    name: 'Fasting Glucose',
-                    x: ['1st Tri', '2nd Tri', '3rd Tri'],
-                    y: [82, 88, 94],
-                    line: {color: '#6B8E23', width: 3, shape: 'spline'},
-                    marker: {symbol: 'star', size: 12, color: '#6B8E23'},
-                    yaxis: 'y2'
-                  }
-                ]}
-                layout={{
-                  width: 350,
-                  height: 250,
-                  margin: {t: 40, b: 60, l: 50, r: 50},
-                  plot_bgcolor: '#FFFBF8',
-                  paper_bgcolor: 'rgba(0,0,0,0)',
-                  xaxis: { title: 'Trimester', gridcolor: 'rgba(255,140,0,0.1)' },
-                  yaxis: { title: 'BP (mmHg)', gridcolor: 'rgba(255,140,0,0.1)' },
-                  yaxis2: { title: 'Glucose (mg/dL)', overlaying: 'y', side: 'right', titlefont: {color: '#6B8E23'} }
-                }}
-                config={{displayModeBar: false}}
-              />
-            </div>
-          </div>
         </div>
-
+        
+       
+        {/* Second Row: 2 Charts */}
+             <div style={styles.graphRow}>
+                
+          </div>
+          <div style={{ ...styles.buttonGrid,marginleft: '20px',}}>
+                <Component/>
+          </div>
         <div style={styles.buttonGrid}>
           <Link to="/pregnancy-postpartum-tracker" style={styles.gridButton}>
             <FaBaby style={styles.icon} />
@@ -519,9 +365,7 @@ const Dashboard = () => {
           </Link>
         </div>
         
-        <div style={styles.newsletterBox}>
-          <Link to="/newsletter" style={styles.newsletterHeading}>Subscribe to Our Newsletter</Link>
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );

@@ -611,10 +611,10 @@ const PregnancyPostpartumTracker = () => {
       <div style={styles.trackerContainer}>
         <h2 style={styles.heading}>Pregnancy & Postpartum Tracker</h2>
         <div style={styles.toggleContainer}>
-          <button onClick={() => setMode('pregnancy')} style={{ ...styles.toggleButton, backgroundColor: mode === 'pregnancy' ? '#ff8c00' : '#ccc' }}>Pregnancy</button>
-          <button onClick={() => setMode('postpartum')} style={{ ...styles.toggleButton, backgroundColor: mode === 'postpartum' ? '#ff8c00' : '#ccc' }}>Postpartum</button>
-          <button onClick={() => setMode('medication')} style={{ ...styles.toggleButton, backgroundColor: mode === 'medication' ? '#ff8c00' : '#ccc' }}>Medication Reminder</button>
-          <button onClick={() => setMode('menopause')} style={{ ...styles.toggleButton, backgroundColor: mode === 'menopause' ? '#ff8c00' : '#ccc' }}>Menopause Insights</button>
+          <button onClick={() => {setMode('pregnancy'); setResult('')}} style={{ ...styles.toggleButton, backgroundColor: mode === 'pregnancy' ? '#ff8c00' : '#ccc' }}>Pregnancy</button>
+          <button onClick={() => {setMode('postpartum') ; setResult('')}} style={{ ...styles.toggleButton, backgroundColor: mode === 'postpartum' ? '#ff8c00' : '#ccc' }}>Postpartum</button>
+          <button onClick={() => {setMode('medication'); setResult('')}} style={{ ...styles.toggleButton, backgroundColor: mode === 'medication' ? '#ff8c00' : '#ccc' }}>Medication Reminder</button>
+          <button onClick={() => {setMode('menopause'); setResult('')}} style={{ ...styles.toggleButton, backgroundColor: mode === 'menopause' ? '#ff8c00' : '#ccc' }}>Menopause Insights</button>
         </div>
 
         {/* {mode === 'pregnancy' && (

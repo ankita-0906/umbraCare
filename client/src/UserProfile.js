@@ -23,7 +23,7 @@ const UserProfile = () => {
         if (!token) throw new Error('No token found. Please log in again.');
   
         console.log('Fetching profile...');
-        const response = await axios.get('http://localhost:5000/api/users/me', {
+        const response = await axios.get(`${process.env.BACKEND_URL}/api/users/me`, {
           headers: { 'x-auth-token': token },
         });
         console.log('Profile Response:', response.data);
@@ -63,7 +63,7 @@ if (!user) return <div style={styles.container}>Loading...</div>;
         throw new Error('No token found. Please log in again.');
       }
       const response = await axios.put(
-        'http://localhost:5000/api/users/me',
+        `${process.env.BACKEND_URL}/api/users/me`,
         formData,
         {
           headers: {

@@ -13,7 +13,7 @@ const Register = ({ setIsLoggedIn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/users/register', { name, email, password });
+      const res = await axios.post(`${process.env.BACKEND_URL}/api/users/register`, { name, email, password });
       localStorage.setItem('token', res.data.token);
       setIsLoggedIn(true);
       navigate('/dashboard');

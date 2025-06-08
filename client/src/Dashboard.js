@@ -26,7 +26,7 @@ const fetchPredictionData = async () => {
   try {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId'); // Assuming userId is stored in localStorage
-    const response = await axios.get(`http://localhost:5000/api/period-tracker/prediction/${userId}`, {
+    const response = await axios.get(`${process.env.BACKEND_URL}/api/period-tracker/prediction/${userId}`, {
       headers: {
         'x-auth-token': token
       }

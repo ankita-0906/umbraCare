@@ -19,7 +19,7 @@ const Notifications = () => {
       }
       console.log('Token for fetching notifications:', token);
 
-      const response = await axios.get(`${process.env.BACKEND_URL}/api/notifications`, {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/notifications`, {
         headers: {
           'x-auth-token': token,
         },
@@ -38,7 +38,7 @@ const Notifications = () => {
         throw new Error('No token found. Please log in again.');
       }
 
-      await axios.put(`${process.env.BACKEND_URL}/api/notifications/${id}/read`, {}, {
+      await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/notifications/${id}/read`, {}, {
         headers: {
           'x-auth-token': token,
         },

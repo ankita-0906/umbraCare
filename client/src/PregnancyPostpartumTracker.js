@@ -71,12 +71,12 @@
 //       if (!token) throw new Error('No token found. Please log in again.');
 
 //       await axios.post(
-//         '${process.env.BACKEND_URL}/api/notifications',
+//         '${process.env.REACT_APP_BACKEND_URL}/api/notifications',
 //         { type: 'medication_reminder', message: `Medication Reminder: ${medication}` },
 //         { headers: { 'x-auth-token': token } }
 //       );
 //       await axios.post(
-//         '${process.env.BACKEND_URL}/api/notifications',
+//         '${process.env.REACT_APP_BACKEND_URL}/api/notifications',
 //         { type: 'appointment_reminder', message: `Next Appointment: ${appointment}` },
 //         { headers: { 'x-auth-token': token } }
 //       );
@@ -567,12 +567,12 @@ const PregnancyPostpartumTracker = () => {
       if (!token) throw new Error('No token found. Please log in again.');
 
       await axios.post(
-        `${process.env.BACKEND_URL}/api/notifications`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/notifications`,
         { type: 'medication_reminder', message: `Medication Reminder: ${medication}` },
         { headers: { 'x-auth-token': token } }
       );
       await axios.post(
-        `${process.env.BACKEND_URL}/api/notifications`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/notifications`,
         { type: 'appointment_reminder', message: `Next Appointment: ${appointment}` },
         { headers: { 'x-auth-token': token } }
       );

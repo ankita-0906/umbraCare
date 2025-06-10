@@ -21,7 +21,7 @@ const Profile = () => {
         const token = localStorage.getItem('token');
         if (!token) throw new Error('No token found. Please log in again.');
 
-        const response = await axios.get(`${process.env.BACKEND_URL}/api/users/me`, {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/me`, {
           headers: { 'x-auth-token': token },
         });
         setUser(response.data);
@@ -57,7 +57,7 @@ const Profile = () => {
         throw new Error('No token found. Please log in again.');
       }
       const response = await axios.put(
-        `${process.env.BACKEND_URL}/api/users/me`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/me`,
         formData,
         {
           headers: {

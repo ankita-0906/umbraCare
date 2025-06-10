@@ -86,11 +86,11 @@
     
 //     try {
 //       // Mock API response for demonstration
-//       const API_KEY = "AIzaSyBlK3GWHjy_jKXXxHgHglPsm87CiFEJDJ4";
-//       // console.log(API_KEY);
+//       const REACT_APP_REACT_APP_REACT_APP_REACT_APP_REACT_APP_API_KEY = "AIzaSyBlK3GWHjy_jKXXxHgHglPsm87CiFEJDJ4";
+//       // console.log(REACT_APP_REACT_APP_REACT_APP_REACT_APP_REACT_APP_API_KEY);
 //       const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 //       // https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}
-//       const response = await fetch(`${url}?key=${API_KEY}`, {
+//       const response = await fetch(`${url}?key=${REACT_APP_REACT_APP_REACT_APP_REACT_APP_REACT_APP_API_KEY}`, {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -532,9 +532,9 @@ const Chatbot = () => {
     }
 
     try {
-      const API_KEY = "AIzaSyBlK3GWHjy_jKXXxHgHglPsm87CiFEJDJ4";
+      const REACT_APP_API_KEY = "AIzaSyBlK3GWHjy_jKXXxHgHglPsm87CiFEJDJ4";
       const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
-      const response = await fetch(`${url}?key=${API_KEY}`, {
+      const response = await fetch(`${url}?key=${REACT_APP_API_KEY}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

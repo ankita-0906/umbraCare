@@ -24,7 +24,7 @@
 //   React.useEffect(() => {
 //     const fetchNewsletters = async () => {
 //       try {
-//         const response = await fetch('${process.env.BACKEND_URL}/api/newsletter/newsletter');
+//         const response = await fetch('${process.env.REACT_APP_BACKEND_URL}/api/newsletter/newsletter');
 //         if (!response.ok) {
 //           throw new Error('Failed to fetch newsletters');
 //         }
@@ -118,7 +118,7 @@
 //         return;
 //       }
 
-//       await axios.post('${process.env.BACKEND_URL}/api/newsletter/subscribe', {}, {
+//       await axios.post('${process.env.REACT_APP_BACKEND_URL}/api/newsletter/subscribe', {}, {
 //         headers: { 'x-auth-token': token }
 //       });
 
@@ -138,7 +138,7 @@
 //     e.preventDefault();
 //     if (email && email.includes("@")) {
 //       try {
-//         const response = await fetch('${process.env.BACKEND_URL}/api/newsData/subscribe', {
+//         const response = await fetch('${process.env.REACT_APP_BACKEND_URL}/api/newsData/subscribe', {
 //           method: 'POST',
 //           headers: {
 //             'Content-Type': 'application/json',
@@ -179,7 +179,7 @@
 //         return;
 //       }
 
-//       const response = await fetch('${process.env.BACKEND_URL}/api/newsletter/addnewsletter', {
+//       const response = await fetch('${process.env.REACT_APP_BACKEND_URL}/api/newsletter/addnewsletter', {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -223,7 +223,7 @@
 //         return;
 //       }
 
-//       await axios.delete(`${process.env.BACKEND_URL}/api/newsletter/newsletter/${id}`, {
+//       await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/newsletter/newsletter/${id}`, {
 //         headers: { 'x-auth-token': token }
 //       });
 

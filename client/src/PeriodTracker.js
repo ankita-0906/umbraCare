@@ -31,7 +31,7 @@ const PeriodTracker = () => {
         throw new Error('No token found. Please log in again.');
       }
 
-      const response = await axios.get(`${process.env.BACKEND_URL}/api/period-tracker`, {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/period-tracker`, {
         headers: {
           'x-auth-token': token,
         },
@@ -59,7 +59,7 @@ const PeriodTracker = () => {
       };
 
       if (editMode && currentEntryId) {
-        await axios.put(`${process.env.BACKEND_URL}/api/period-tracker/${currentEntryId}`, periodData, {
+        await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/period-tracker/${currentEntryId}`, periodData, {
           headers: {
             'x-auth-token': token,
             'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ const PeriodTracker = () => {
         setEditMode(false);
         setCurrentEntryId(null);
       } else {
-        await axios.post(`${process.env.BACKEND_URL}/api/period-tracker`, periodData, {
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/period-tracker`, periodData, {
           headers: {
             'x-auth-token': token,
             'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ const PeriodTracker = () => {
         throw new Error('No token found. Please log in again.');
       }
 
-      await axios.delete(`${process.env.BACKEND_URL}/api/period-tracker/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/period-tracker/${id}`, {
         headers: {
           'x-auth-token': token,
         },

@@ -57,7 +57,7 @@ const App = () => {
               <Route path="/newsletter/nutrition-tips" element={isLoggedIn ? <NutritionTips /> : <Navigate to="/" />} />
               <Route path="/newsletter/menstrual-cycle" element={isLoggedIn ? <MenstrualCycle /> : <Navigate to="/" />} /> {/* Add this route */}
             </Routes>
-            {isLoggedIn && <Chatbot />}
+            {isLoggedIn && <chatbot />}
           </>
         )}
       </div>
